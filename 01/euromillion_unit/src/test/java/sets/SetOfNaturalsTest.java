@@ -11,6 +11,8 @@ import org.junit.jupiter.api.*;
 /**
  * @author ico0
  */
+
+//added a intersection test and a duplicate addition test
 public class SetOfNaturalsTest {
     private SetOfNaturals setA;
     private SetOfNaturals setB;
@@ -54,12 +56,23 @@ public class SetOfNaturalsTest {
         assertThrows(IllegalArgumentException.class, () -> setA.add(elems));
     }
 
+    @Test
+    public void duplicateTest(){
+        setA.add(1);
+        assertThrows(IllegalArgumentException.class,()->setA.add(1));
+        assertEquals(1,setA.size());
+    }
+
 
     @Test
     public void testIntersectForNoIntersection() {
         assertFalse(setA.intersects(setB), "no intersection but was reported as existing");
 
     }
+
+    @Test
+    @Disabled
+    public void testIntersection(){setA.add(10);setA.add(11);assertTrue(setB.intersects(setA));}
 
 
 }

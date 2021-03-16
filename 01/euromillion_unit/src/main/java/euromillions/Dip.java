@@ -16,7 +16,10 @@ public class Dip {
 
     private SetOfNaturals numbers;
     private SetOfNaturals starts;
-
+    public static final int NUMBERCOUNT =5;
+    public static final int NUMBERCAP =50;
+    public static final int STARCOUNT =2;
+    public static final int STARCAP =10;
     public Dip() {
         numbers = new SetOfNaturals();
         starts = new SetOfNaturals();
@@ -25,7 +28,7 @@ public class Dip {
     public Dip(int[] arrayOfNumbers, int[] arrayOfStarts) {
         this();
 
-        if (5 == arrayOfNumbers.length && 2 == arrayOfStarts.length) {
+        if (NUMBERCOUNT == arrayOfNumbers.length && STARCOUNT == arrayOfStarts.length) {
             numbers.add(arrayOfNumbers);
             starts.add(arrayOfStarts);
         } else {
@@ -46,15 +49,15 @@ public class Dip {
         Random generator = new Random();
 
         Dip randomDip = new Dip();
-        for (int i = 0; i < 5; ) {
-            int candidate = generator.nextInt(49) + 1;
+        for (int i = 0; i < NUMBERCOUNT; ) {
+            int candidate = generator.nextInt(NUMBERCAP-1) + 1; //not efficient but it IS readable
             if (!randomDip.getNumbersColl().contains(candidate)) {
                 randomDip.getNumbersColl().add(candidate);
                 i++;
             }
         }
-        for (int i = 0; i < 2; ) {
-            int candidate = generator.nextInt(9) + 1;
+        for (int i = 0; i < STARCOUNT; ) {
+            int candidate = generator.nextInt(STARCAP-1) + 1;
             if (!randomDip.getStarsColl().contains(candidate)) {
                 randomDip.getStarsColl().add(candidate);
                 i++;

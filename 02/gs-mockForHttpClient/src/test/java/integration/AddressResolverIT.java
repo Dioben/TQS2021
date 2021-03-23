@@ -15,24 +15,24 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AddressResolverIT {
 
-
+    AddressResolver resolver;
+    TqsBasicHttpClient client;
     @BeforeEach
     public void init(){
+        client = new TqsBasicHttpClient();
+        resolver = new AddressResolver(client);
     }
 
     @Test
     public void whenGoodCoordidates_returnAddress() throws IOException, URISyntaxException, ParseException {
-        //todo
-
-        //Address result = resolver.findAddressForLocation(40.640661, -8.656688);
-        //assertEquals( result, new Address( "Cais do Alboi", "Glória e Vera Cruz", "Centro", "3800-246", null) );
+        Address result = resolver.findAddressForLocation(40.640661, -8.656688);
+        assertEquals( result, new Address( "Cais do Alboi", "Glória e Vera Cruz", "Centro", "3800-246", null) );
 
     }
 
     @Test
     public void whenBadCoordidates_trhowBadArrayindex() throws IOException, URISyntaxException, ParseException {
-        // todo
-
+        assertThrows(IndexOutOfBoundsException.class,()-> resolver.findAddressForLocation(-200.123456,0.123456));
     }
 
 }

@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import lombok.*;
 
 import javax.persistence.Entity;

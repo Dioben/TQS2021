@@ -1,7 +1,8 @@
+package com.example.demo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CarController {
 
     @GetMapping(path = "/cars/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable(value = "id") Long carId) throws  ResourceNotFoundException{
-        Car car = carManagerService.getCarDetails(carId).orElseThrow(() -> new ResourceNotFoundException("Car not found for ID "+carId));
+        Car car = carManagerService.getCarDetails(carId).orElseThrow(() -> new ResourceNotFoundException("com.example.demo.Car not found for ID "+carId));
         return ResponseEntity.ok().body(car);
     }
 }

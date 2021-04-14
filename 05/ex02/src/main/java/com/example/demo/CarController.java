@@ -13,7 +13,7 @@ public class CarController {
     @Autowired
     CarManagerService carManagerService;
     @PostMapping("/cars")
-    public ResponseEntity<Car> createCar(Car x){
+    public ResponseEntity<Car> createCar(@RequestBody Car x){
         HttpStatus status = HttpStatus.CREATED;
         Car saved = carManagerService.save(x);
         return new ResponseEntity<>(saved,status);

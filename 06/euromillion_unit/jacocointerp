@@ -1,0 +1,4 @@
+Cupon's format method is not being tested at all -> needs to be changed
+Dip equals has a lot of uncovered lines, but they are trivial (same applies to SetOfNaturals) -> does not need to be changed
+No hash functions are tested but they are automatically generated and presumably fine
+UI is not tested directly but there's not much that can be expected from automated testing on a UI.

@@ -26,10 +26,12 @@ public class CachedInfoProvider {
         if (!(lastQueried.containsKey(query) && lastQueried.get(query)+EXPIRE_LIMIT> now)){
             refresh(lat, lon, query);
         }
+        else{logger.info("Did not require refresh");}
         return cache.get(query);
     }
 
     private void refresh(double lat, double lon, Point2D query) {
+        logger.info("Refreshing...");
         try{
             cache.put(query,mainClient.getData(lat, lon));
         }catch (Exception e){
@@ -38,5 +40,6 @@ public class CachedInfoProvider {
             }catch (Exception x){logger.error("Both APIs have failed");}
         }
     }
+    public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache");}
 
 }

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Air Quality HW</title>
+
+
+</head>
+<body>
+<h3 id="header">Air Quality HW project</h3>
+<p><label for="latbox">Latitude:</label><input type="number" id="latbox" name ="latitude" min=-90 max=90>
+    <label for="lonbox">Longitude:</label><input type="number" id="lonbox" name="longitude" min=-180 max=180>
+</p>
+<p id="info">Search for coordinates or click the map for information</p>
+<p style="color: red;" id="errorbox" hidden>error text here</p>
+<!--The div element for the map -->
+<div id="map" style="width: 800px;height: 600px"></div>
+
+
+
+<script>
+    function search(lat,lng){}
+
+    function initMap() {
+        const myLatlng = {lat: 0, lng: 0};
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 1,
+            center: myLatlng,
+        });
+        map.addListener("click", (mapsMouseEvent) => {
+            document.getElementById("latbox").value = mapsMouseEvent.latLng.lat();
+            document.getElementById("lonbox").value = mapsMouseEvent.latLng.lng();
+            search(mapsMouseEvent.latLng.lat(), mapsMouseEvent.latLng.lng())
+        })
+    }
+</script>
+<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUF_kDUqk19CWmUJzxJAuHzodaVoXZ2hA&callback=initMap&libraries=&v=weekly"
+        async
+></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package controller;
+package com.example.homework.controller;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

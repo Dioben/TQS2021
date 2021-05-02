@@ -1,5 +1,6 @@
 package com.example.homework.controller;
 
+import com.example.homework.data.WeatherData;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,8 @@ public class Controller {
 
     @ResponseBody
     @GetMapping("/airQuality")
-    String airStats(@RequestParam(value = "lat") Double latitude,@RequestParam(value = "lon") Double longitude){
+    WeatherData airStats(@RequestParam(value = "lat") Double latitude, @RequestParam(value = "lon") Double longitude){
         logger.info("we've been hit");
-        return "hehe xd";
+        return new WeatherData();
     }
 }

@@ -2,9 +2,9 @@ package com.example.ex02;
 
 import com.example.ex02.Book;
 import com.example.ex02.BookRepository;
-import org.junit.Test;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,7 +46,7 @@ public class PostgresBookIT {
         Book book = new Book();
         book.setTitle("IT TIME");
         bookRepository.save(book);
-        assertThat(bookRepository.findById(2L), equalTo(book));
+        assertThat(bookRepository.findById(2L).get().getTitle(), equalTo(book.getTitle()));
     }
     @Test
     @Order(2)

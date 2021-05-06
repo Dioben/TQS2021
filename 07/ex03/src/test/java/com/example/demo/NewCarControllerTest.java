@@ -62,8 +62,8 @@ public class NewCarControllerTest {
 
         RestAssuredMockMvc.given()
                 .auth().none()
-                .when().get("/api/cars/2")
-                .then().assertThat()
+                .when().get("/api/cars/2").then()
+                .assertThat()
                 .statusCode(200)
                 .and().body("maker", is("maker"))
                 .and().body("model", is("model"));
@@ -115,10 +115,6 @@ public class NewCarControllerTest {
                     .then().assertThat()
                     .statusCode(200);
 
-            /*mvc.perform(get("/api/cars/1"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("maker").value("maker"))
-                    .andExpect(jsonPath("model").value("model"));*/
         } catch (Exception e) {
             return;
         }

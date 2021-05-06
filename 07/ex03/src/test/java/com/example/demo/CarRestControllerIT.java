@@ -42,16 +42,13 @@ class CarRestControllerIT {
         registry.add("spring.datasource.username", container::getUsername);
     }
 
-    @AfterEach
-    public void resetDb() {
-        //repository.deleteAll();
-    }
+
 
     @SneakyThrows
     @Test
     void whenValidInput_thenCreateCar() {
         Car c1 = new Car("maker", "model");
-
+        c1.setCarId(1L);
         String url = "http://127.0.0.1:" + randomServerPort + "/api/cars";
 
         RestAssured.given()
@@ -72,6 +69,8 @@ class CarRestControllerIT {
     public void givenCars_whenGetCars_thenStatus200()  {
         Car c1 = new Car("maker1", "model1");
         Car c2 = new Car("maker2", "model2");
+        c1.setCarId(1L);
+        c2.setCarId(2L);
         repository.save(c1);
         repository.save(c2);
         repository.flush();

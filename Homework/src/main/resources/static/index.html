@@ -22,6 +22,7 @@
 
     async function search() {
         var searchurl = "/airQuality?lat=" + document.getElementById("latbox").value + "&lon=" + document.getElementById("lonbox").value;
+        document.getElementById("info").innerText = "Searching...";
         let response = await fetch(searchurl);
         let results = await response.json();
         results = "AQI: "+results['aqi'] + " CO: "+results['co'] +" O3: " + results['o3'] + " PM10: "+results['pm10'] + " PM25: "+results['pm25'];

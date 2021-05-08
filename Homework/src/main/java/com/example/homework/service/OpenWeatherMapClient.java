@@ -8,6 +8,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import static com.example.homework.service.WrongCoordinatesException.checkCoordinateBounds;
+
 @Service
 public class OpenWeatherMapClient {
     private static final String API_KEY = "5d85331459d67e53f53f17a67c0c64b1";
@@ -15,13 +17,14 @@ public class OpenWeatherMapClient {
     RestTemplate fetcher;
     @Autowired
     Logger logger;
-    WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
+
+     public WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
+         checkCoordinateBounds(lat,lng);
         String url = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lng +"&appid=" + API_KEY;
         HttpEntity<String> entity = fetcher.getForEntity(url,String.class);
         String content = entity.getBody();
         String log = "Got "+content+" from OpenWeatherMap";
         logger.info(log);
-
         JSONObject json = new JSONObject(content);
         JSONObject coords = json.getJSONObject("coord");
         double querylat = coords.getDouble("lat");

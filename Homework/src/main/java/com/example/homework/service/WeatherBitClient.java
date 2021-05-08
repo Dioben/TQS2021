@@ -8,6 +8,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import static com.example.homework.service.WrongCoordinatesException.checkCoordinateBounds;
+
 @Service
 public class WeatherBitClient {
     private static final String API_KEY = "d883c6de35eb46fd87316a36fba54376";
@@ -16,13 +18,13 @@ public class WeatherBitClient {
     @Autowired
     Logger logger;
 
-    WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
+    public WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
+        checkCoordinateBounds(lat,lng);
         String url = "https://api.weatherbit.io/v2.0/current/airquality?lat=" + lat + "&lon=" + lng +"&key=" + API_KEY;
         HttpEntity<String> entity = fetcher.getForEntity(url,String.class);
         String content = entity.getBody();
         String log = "Got "+content+" from WeatherBit";
         logger.info(log);
-
         JSONObject json = new JSONObject(content);
         double querylat = json.getDouble("lat");
         double querylon = json.getDouble("lon");

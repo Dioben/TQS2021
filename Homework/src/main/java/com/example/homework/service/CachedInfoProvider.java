@@ -49,8 +49,7 @@ public class CachedInfoProvider {
 
     public WeatherData getData(double lat, double lon){
         Point2D query = new Point2D.Double(lat,lon);
-        long now = System.currentTimeMillis();
-        if (!lastQueried.containsKey(query) || lastQueried.get(query)+EXPIRE_LIMIT< now){
+        if (!lastQueried.containsKey(query) || isExpired(query) ){
             refresh(lat, lon, query);
         }
         else{logger.info("Did not require refresh");cacheUsages++;}
@@ -81,8 +80,9 @@ public class CachedInfoProvider {
             +(cacheUsages+mainApiRequestsSuccess+backupApiRequestsSuccess)+ " calls";}
     public  String fullStats(){return  cacheStats()+"\n"+apiStats();}
 
-    public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache");
-
+    public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache"); }
+    private boolean isExpired(Point2D query){
+        long now = System.currentTimeMillis();
+        return lastQueried.get(query)+EXPIRE_LIMIT< now;
     }
-
 }

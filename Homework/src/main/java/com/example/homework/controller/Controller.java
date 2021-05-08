@@ -4,6 +4,9 @@ import com.example.homework.data.WeatherData;
 import com.example.homework.service.CachedInfoProvider;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,13 +21,15 @@ public class Controller {
 
     @ResponseBody
     @GetMapping("/airQuality")
-    public WeatherData airStats(@RequestParam(value = "lat") Double latitude, @RequestParam(value = "lon") Double longitude){
+    public ResponseEntity<WeatherData> airStats(@RequestParam(value = "lat") Double latitude, @RequestParam(value = "lon") Double longitude){
         String log = "we've been hit for " + latitude +","+longitude;
         logger.info(log);
-        return infoProvider.getData(latitude,longitude);
+        WeatherData data = infoProvider.getData(latitude,longitude);
+        if (data == null) return new ResponseEntity<WeatherData>(HttpStatus.NOT_FOUND);
+            return  new ResponseEntity<WeatherData>(data,HttpStatus.OK);
     }
-    @ResponseBody
-    @GetMapping("/cache")
+    @ResponseBody()
+    @GetMapping(value = "/cache",produces = MediaType.TEXT_PLAIN_VALUE)
     public String cacheInfo(){
         logger.info("Cache stats have been requested");
         return infoProvider.fullStats();

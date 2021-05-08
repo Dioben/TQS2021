@@ -75,8 +75,8 @@ public class CachedInfoProvider {
         }
     }
 
-    public  String mainApiStats(){return mainApiRequests +" calls to the main API , "+ mainApiRequestsSuccess +" sucessful calls";}
-    public  String backupApiStats(){return backupApiRequests +" calls to the backup API , "+ backupApiRequestsSuccess +" sucessful calls";}
+    public  String mainApiStats(){return mainApiRequests +" calls to the main API , "+ mainApiRequestsSuccess +" successful calls";}
+    public  String backupApiStats(){return backupApiRequests +" calls to the backup API , "+ backupApiRequestsSuccess +" successful calls";}
     public  String apiStats(){return mainApiStats()+"\n"+backupApiStats();}
     public  String cacheStats(){return "Cache has been used in "+cacheUsages+" out of "
             +(cacheUsages+mainApiRequestsSuccess+backupApiRequestsSuccess)+ " calls";}

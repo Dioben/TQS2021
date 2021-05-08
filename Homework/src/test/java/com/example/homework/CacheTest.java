@@ -16,7 +16,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CacheTest {
+class CacheTest {
     @Spy
     Clock clock;
     @Mock(lenient=true)

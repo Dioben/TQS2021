@@ -23,4 +23,10 @@ public class Controller {
         logger.info(log);
         return infoProvider.getData(latitude,longitude);
     }
+    @ResponseBody
+    @GetMapping("/cache")
+    String cacheInfo(){
+        logger.info("Cache stats have been requested");
+        return infoProvider.fullStats();
+    }
 }

@@ -15,6 +15,8 @@ public class CachedInfoProvider {
     WeatherBitClient secondaryClient;
     @Autowired
     Logger logger;
+    @Autowired
+    Clock clock;
     HashMap<Point2D,Long> lastQueried;
     HashMap<Point2D, WeatherData> cache;
     private static final long EXPIRE_LIMIT = 30000;//30 seconds
@@ -61,13 +63,13 @@ public class CachedInfoProvider {
         try{
             mainApiRequests++;
             cache.put(query,mainClient.getData(lat, lon));
-            lastQueried.put(query,System.currentTimeMillis());
+            lastQueried.put(query,clock.currentTimeMillis());
             mainApiRequestsSuccess++;
         }catch (Exception e){
             try{
                 backupApiRequests++;
                 cache.put(query,secondaryClient.getData(lat, lon));
-                lastQueried.put(query,System.currentTimeMillis());
+                lastQueried.put(query,clock.currentTimeMillis());
                 backupApiRequestsSuccess++;
             }catch (Exception x){logger.error("Both APIs have failed");}
         }
@@ -82,7 +84,7 @@ public class CachedInfoProvider {
 
     public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache"); }
     private boolean isExpired(Point2D query){
-        long now = System.currentTimeMillis();
+        long now = clock.currentTimeMillis();
         return lastQueried.get(query)+EXPIRE_LIMIT< now;
     }
 }

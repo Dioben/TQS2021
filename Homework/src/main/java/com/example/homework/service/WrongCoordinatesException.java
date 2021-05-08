@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class WrongCoordinatesException extends Exception{
     @Autowired
-    Logger logger;
+    transient Logger logger;
     public WrongCoordinatesException(String error){
         super(error);
         logger.error(error);

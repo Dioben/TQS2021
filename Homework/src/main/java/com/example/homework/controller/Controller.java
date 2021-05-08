@@ -18,14 +18,14 @@ public class Controller {
 
     @ResponseBody
     @GetMapping("/airQuality")
-    WeatherData airStats(@RequestParam(value = "lat") Double latitude, @RequestParam(value = "lon") Double longitude){
+    public WeatherData airStats(@RequestParam(value = "lat") Double latitude, @RequestParam(value = "lon") Double longitude){
         String log = "we've been hit for " + latitude +","+longitude;
         logger.info(log);
         return infoProvider.getData(latitude,longitude);
     }
     @ResponseBody
     @GetMapping("/cache")
-    String cacheInfo(){
+    public String cacheInfo(){
         logger.info("Cache stats have been requested");
         return infoProvider.fullStats();
     }

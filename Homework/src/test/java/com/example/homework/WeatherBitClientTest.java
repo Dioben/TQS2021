@@ -44,6 +44,7 @@ class WeatherBitClientTest {
     @Test void coordinateDesyncTest(){
         when(template.getForEntity(Mockito.anyString(),Mockito.any())).thenReturn(ResponseEntity.ok("          {  \n" + "             \"lat\":50,\n" + "             \"lon\":50,\n" +"             \"timezone\":\"America\\/New_York\",\n" + "             \"city_name\":\"Raleigh\",\n" + "             \"country_code\":\"US\",\n" + "             \"state_code\":\"NC\",\n" + "             \"data\":[  \n" + "                {  \n" + "                   \"aqi\":47,\n" + "                   \"o3\":101.2,\n" + "                   \"so2\":3.8594,\n" + "                   \"no2\":5.42472,\n" + "                   \"co\":251.9,\n" + "                   \"pm10\":16,\n" + "                   \"pm25\":11,\n" + "                   \"pollen_level_tree\": 4,\n" + "                   \"pollen_level_grass\": 2,\n" + "                   \"pollen_level_weed\": 2,\n" + "                   \"mold_level\": 0,\n" + "                   \"predominant_pollen_type\": \"Trees\"\n" + "                }\n" + "             ]\n" + "          }"));
         Assertions.assertThrows(WrongCoordinatesException.class,()->{client.getData(49.0,49.0);});
+        Assertions.assertThrows(WrongCoordinatesException.class,()->{client.getData(51.0,50.0);});
     }
 
     @Test void objectConverterTest() throws WrongCoordinatesException, JSONException {

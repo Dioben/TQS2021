@@ -71,7 +71,9 @@ public class CachedInfoProvider {
                 cache.put(query,secondaryClient.getData(lat, lon));
                 lastQueried.put(query,clock.currentTimeMillis());
                 backupApiRequestsSuccess++;
-            }catch (Exception x){logger.error("Both APIs have failed");}
+            }catch (Exception x){logger.error("Both APIs have failed");
+                                if (lastQueried.containsKey(query)){cacheUsages++;}
+            }
         }
     }
 

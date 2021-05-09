@@ -46,6 +46,7 @@ class OpenWeatherClientTest {
     @Test void coordinateDesyncTest(){
         when(template.getForEntity(Mockito.anyString(),Mockito.any())).thenReturn(ResponseEntity.ok("{\n" + "  \"coord\": {\"lat\":50,\n" + "  \"lon\":50},\n" + "  \"list\":[\n" + "    {\n" + "      \"dt\":1605182400,\n" + "      \"main\":{\n" + "        \"aqi\":1\n" + "      },\n" + "      \"components\":{\n" + "        \"co\":201.94053649902344,\n" + "        \"no\":0.01877197064459324,\n" + "        \"no2\":0.7711350917816162,\n" + "        \"o3\":68.66455078125,\n" + "        \"so2\":0.6407499313354492,\n" + "        \"pm2_5\":0.5,\n" + "        \"pm10\":0.540438711643219,\n" + "        \"nh3\":0.12369127571582794\n" + "      }\n" + "    }\n" + "  ]\n" + "} "));
         Assertions.assertThrows(WrongCoordinatesException.class,()->{client.getData(49.0,49.0);});
+        Assertions.assertThrows(WrongCoordinatesException.class,()->{client.getData(51.0,50.0);});
     }
 
     @Test void objectConverterTest() throws WrongCoordinatesException, JSONException {

@@ -2,30 +2,21 @@ package com.example.homework.service;
 
 import com.example.homework.data.WeatherData;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
-import static com.example.homework.service.WrongCoordinatesException.checkCoordinateBounds;
 
 @Service
-public class OpenWeatherMapClient {
+public class OpenWeatherMapClient extends CoordRestClient{
     private static final String API_KEY = "5d85331459d67e53f53f17a67c0c64b1";
-    @Autowired
-    RestTemplate fetcher;
-    @Autowired
-    Logger logger;
 
-     public WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
-         checkCoordinateBounds(lat,lng);
-        String url = "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lng +"&appid=" + API_KEY;
-        HttpEntity<String> entity = fetcher.getForEntity(url,String.class);
-        String content = entity.getBody();
-        String log = "Got "+content+" from OpenWeatherMap";
+    @Override
+    protected String generateURL(double lat, double lon) {
+        return "http://api.openweathermap.org/data/2.5/air_pollution?lat=" + lat + "&lon=" + lon +"&appid=" + API_KEY;
+    }
+
+    @Override
+    protected WeatherData parseJson(JSONObject json,double lat,double lng) throws WrongCoordinatesException {
+        String log = "Got "+json+" from OpenWeatherMap";
         logger.info(log);
-        JSONObject json = new JSONObject(content);
         JSONObject coords = json.getJSONObject("coord");
         double querylat = coords.getDouble("lat");
         double querylon = coords.getDouble("lon");

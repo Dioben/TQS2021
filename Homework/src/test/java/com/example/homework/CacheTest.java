@@ -2,6 +2,7 @@ package com.example.homework;
 
 import com.example.homework.data.WeatherData;
 import com.example.homework.service.*;
+import org.json.JSONException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,7 +31,7 @@ class CacheTest {
 
     @Test
     @Order(1)
-    void getFromMainApiTest() throws WrongCoordinatesException {
+    void getFromMainApiTest() throws WrongCoordinatesException, JSONException {
         WeatherData data = new WeatherData();
         data.setAqi(299);
         when(mainClient.getData(Mockito.anyDouble(),Mockito.anyDouble())).thenReturn(data);
@@ -42,7 +43,7 @@ class CacheTest {
     }
     @Test
     @Order(2)
-    void backupApiTest() throws WrongCoordinatesException {
+    void backupApiTest() throws WrongCoordinatesException, JSONException {
         WeatherData data = new WeatherData();
         data.setAqi(299);
 
@@ -64,7 +65,7 @@ class CacheTest {
     }
     @Test
     @Order(3)
-    void cachedContentTest() throws WrongCoordinatesException {
+    void cachedContentTest() throws WrongCoordinatesException, JSONException {
         WeatherData data = new WeatherData();
         data.setAqi(299);
         when(mainClient.getData(Mockito.anyDouble(),Mockito.anyDouble())).thenReturn(data);
@@ -82,7 +83,7 @@ class CacheTest {
     }
     @Test
     @Order(4)
-    void cacheTimeoutTest() throws WrongCoordinatesException {
+    void cacheTimeoutTest() throws WrongCoordinatesException, JSONException {
         WeatherData data = new WeatherData();
         data.setAqi(299);
         when(mainClient.getData(Mockito.anyDouble(),Mockito.anyDouble())).thenReturn(data);

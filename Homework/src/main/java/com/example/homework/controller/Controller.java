@@ -25,8 +25,8 @@ public class Controller {
         String log = "we've been hit for " + latitude +","+longitude;
         logger.info(log);
         WeatherData data = infoProvider.getData(latitude,longitude);
-        if (data == null) return new ResponseEntity<WeatherData>(HttpStatus.NOT_FOUND);
-            return  new ResponseEntity<WeatherData>(data,HttpStatus.OK);
+        if (data == null) {return new ResponseEntity<>(HttpStatus.NOT_FOUND);}
+        return  new ResponseEntity<>(data,HttpStatus.OK);
     }
     @ResponseBody()
     @GetMapping(value = "/cache",produces = MediaType.TEXT_PLAIN_VALUE)

@@ -2,30 +2,23 @@ package com.example.homework.service;
 
 import com.example.homework.data.WeatherData;
 import org.json.JSONObject;
-import org.slf4j.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
-import static com.example.homework.service.WrongCoordinatesException.checkCoordinateBounds;
 
 @Service
-public class WeatherBitClient {
+public class WeatherBitClient extends  CoordRestClient{
     private static final String API_KEY = "d883c6de35eb46fd87316a36fba54376";
-    @Autowired
-    RestTemplate fetcher;
-    @Autowired
-    Logger logger;
 
-    public WeatherData getData(double lat, double lng) throws WrongCoordinatesException {
-        checkCoordinateBounds(lat,lng);
-        String url = "https://api.weatherbit.io/v2.0/current/airquality?lat=" + lat + "&lon=" + lng +"&key=" + API_KEY;
-        HttpEntity<String> entity = fetcher.getForEntity(url,String.class);
-        String content = entity.getBody();
-        String log = "Got "+content+" from WeatherBit";
+    @Override
+    protected String generateURL(double lat, double lon) {
+        return "https://api.weatherbit.io/v2.0/current/airquality?lat=" + lat + "&lon=" + lon +"&key=" + API_KEY;
+    }
+
+    @Override
+    protected WeatherData parseJson(JSONObject json, double lat, double lng) throws WrongCoordinatesException {
+        String log = "Got "+json+" from WeatherBit";
         logger.info(log);
-        JSONObject json = new JSONObject(content);
+
         double querylat = json.getDouble("lat");
         double querylon = json.getDouble("lon");
 

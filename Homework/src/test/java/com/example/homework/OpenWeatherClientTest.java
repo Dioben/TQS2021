@@ -3,6 +3,7 @@ import com.example.homework.data.WeatherData;
 import com.example.homework.service.OpenWeatherMapClient;
 import com.example.homework.service.WrongCoordinatesException;
 import lombok.SneakyThrows;
+import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -47,7 +48,7 @@ class OpenWeatherClientTest {
         Assertions.assertThrows(WrongCoordinatesException.class,()->{client.getData(49.0,49.0);});
     }
 
-    @Test void objectConverterTest() throws WrongCoordinatesException {
+    @Test void objectConverterTest() throws WrongCoordinatesException, JSONException {
         when(template.getForEntity(Mockito.anyString(),Mockito.any())).thenReturn(ResponseEntity.ok("{\n" + "  \"coord\":{\"lat\": 50,\n" + " \"lon\":   50},\n" + "  \n" + "  \"list\":[\n" + "    {\n" + "      \"dt\":1605182400,\n" + "      \"main\":{\n" + "        \"aqi\":1\n" + "      },\n" + "      \"components\":{\n" + "        \"co\":201.94053649902344,\n" + "        \"no\":0.01877197064459324,\n" + "        \"no2\":0.7711350917816162,\n" + "        \"o3\":68.66455078125,\n" + "        \"so2\":0.6407499313354492,\n" + "        \"pm2_5\":0.5,\n" + "        \"pm10\":0.540438711643219,\n" + "        \"nh3\":0.12369127571582794\n" + "      }\n" + "    }\n" + "  ]\n" + "} "));
         WeatherData data = new WeatherData();
         data.setLon(50);

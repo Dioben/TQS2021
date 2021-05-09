@@ -1,5 +1,6 @@
 package com.example.homework.service;
 
+import com.example.homework.data.CachedWeatherData;
 import com.example.homework.data.WeatherData;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,7 @@ public class CachedInfoProvider {
     Logger logger;
     @Autowired
     Clock clock;
-    HashMap<Point2D,Long> lastQueried;
-    HashMap<Point2D, WeatherData> cache;
+    HashMap<Point2D, CachedWeatherData> cache;
     private static final long EXPIRE_LIMIT = 30000;//30 seconds
 
     private  long mainApiRequests=0;
@@ -27,7 +27,7 @@ public class CachedInfoProvider {
     private  long backupApiRequestsSuccess=0;
     private  long cacheUsages=0;
 
-    public CachedInfoProvider(){lastQueried= new HashMap<>(); cache = new HashMap<>();}
+    public CachedInfoProvider(){ cache = new HashMap<>();}
 
     public  long getMainApiRequests() {
         return mainApiRequests;
@@ -51,28 +51,27 @@ public class CachedInfoProvider {
 
     public WeatherData getData(double lat, double lon){
         Point2D query = new Point2D.Double(lat,lon);
-        if (!lastQueried.containsKey(query) || isExpired(query) ){
+        if (!cache.containsKey(query) || isExpired(query) ){
             refresh(lat, lon, query);
         }
         else{logger.info("Did not require refresh");cacheUsages++;}
-        return cache.get(query);
+        if (!cache.containsKey(query)){return null;}
+        return cache.get(query).getData();
     }
 
     private void refresh(double lat, double lon, Point2D query) {
         logger.info("Refreshing...");
         try{
             mainApiRequests++;
-            cache.put(query,mainClient.getData(lat, lon));
-            lastQueried.put(query,clock.currentTimeMillis());
+            cache.put(query,new CachedWeatherData(mainClient.getData(lat, lon),clock.currentTimeMillis()));
             mainApiRequestsSuccess++;
         }catch (Exception e){
             try{
                 backupApiRequests++;
-                cache.put(query,secondaryClient.getData(lat, lon));
-                lastQueried.put(query,clock.currentTimeMillis());
+                cache.put(query,new CachedWeatherData(secondaryClient.getData(lat, lon),clock.currentTimeMillis()));
                 backupApiRequestsSuccess++;
             }catch (Exception x){logger.error("Both APIs have failed");
-                                if (lastQueried.containsKey(query)){cacheUsages++;}
+                                if (cache.containsKey(query)){cacheUsages++;logger.info("Using outdated value");}
             }
         }
     }
@@ -91,9 +90,9 @@ public class CachedInfoProvider {
             +", \"secondaryApiCalls\":"+backupApiRequests
             +", \"secondaryApiCallsSuccess\":"+backupApiRequestsSuccess+
             "}";}
-    public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache"); }
+
+    public void clear(){cache = new HashMap<>();logger.info("Cleared cache"); }
     private boolean isExpired(Point2D query){
-        long now = clock.currentTimeMillis();
-        return lastQueried.get(query)+EXPIRE_LIMIT< now;
+        return cache.get(query).getTimestamp()+EXPIRE_LIMIT< clock.currentTimeMillis();
     }
 }

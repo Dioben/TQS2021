@@ -80,6 +80,14 @@ class ApiTest {
     void cacheStatFormatting(){
         String expected = "5000 calls to the main API ,0 successful calls\n5000 calls to the backup API , 0 successful calls\nCache has been used in 5000 out of 5000 calls";
         Mockito.when(cachedInfoProvider.fullStats()).thenReturn(expected);
+        when().get("/cacheReport").then().assertThat().statusCode(200)
+                .and().body(equalTo(expected));
+    }
+
+    @Test
+    void cacheStatJson(){
+        String expected = "{}";
+        Mockito.when(cachedInfoProvider.statsAsJson()).thenReturn(expected);
         when().get("/cache").then().assertThat().statusCode(200)
                 .and().body(equalTo(expected));
     }

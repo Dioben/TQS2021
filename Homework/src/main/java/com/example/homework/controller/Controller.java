@@ -29,9 +29,15 @@ public class Controller {
         return  new ResponseEntity<>(data,HttpStatus.OK);
     }
     @ResponseBody()
-    @GetMapping(value = "/cache",produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(value = "/cacheReport",produces = MediaType.TEXT_PLAIN_VALUE)
     public String cacheInfo(){
         logger.info("Cache stats have been requested");
         return infoProvider.fullStats();
+    }
+    @ResponseBody()
+    @GetMapping(value = "/cache")
+    public String cacheJson(){
+        logger.info("Cache stats have been requested");
+        return infoProvider.statsAsJson();
     }
 }

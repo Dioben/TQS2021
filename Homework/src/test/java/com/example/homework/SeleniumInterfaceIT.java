@@ -25,13 +25,19 @@ class SeleniumInterfaceIT {
     @Test
     @Order(0)
     void initialCache(ChromeDriver driver){
-        driver.get("http://localhost:" + randomServerPort + "/cache");
+        driver.get("http://localhost:" + randomServerPort + "/cacheReport");
         Assertions.assertEquals("Cache has been used in 0 out of 0 calls\n" +
                 "0 calls to the main API , 0 successful calls\n" +
                 "0 calls to the backup API , 0 successful calls",driver.findElement(By.tagName("pre")).getText());
     }
 
-
+    @Test
+    @Order(0)
+    void initialCacheJson(ChromeDriver driver){
+        driver.get("http://localhost:" + randomServerPort + "/cache");
+        Assertions.assertEquals("{\"cacheCalls\":0, \"totalCalls\":0, \"mainApiCalls\":0, \"mainApiCallsSuccess\":0, \"secondaryApiCalls\":0, \"secondaryApiCallsSuccess\":0}",
+                driver.findElement(By.tagName("body")).getText());
+    }
     @Test
     @Order(1)
     void validQuery(ChromeDriver driver) throws InterruptedException {
@@ -62,8 +68,15 @@ class SeleniumInterfaceIT {
     @Test
     @Order(3)
     void cacheCheck(ChromeDriver driver){
-        driver.get("http://localhost:" + randomServerPort + "/cache");
+        driver.get("http://localhost:" + randomServerPort + "/cacheReport");
         Assertions.assertEquals("Cache has been used in 2 out of 3 calls\n2 calls to the main API",
                                         driver.findElement(By.tagName("pre")).getText().substring(0,63));
+    }
+    @Test
+    @Order(3)
+    void cacheCheckJson(ChromeDriver driver){
+        driver.get("http://localhost:" + randomServerPort + "/cache");
+        Assertions.assertEquals("{\"cacheCalls\":2, \"totalCalls\":3, \"mainApiCalls\":2",
+                driver.findElement(By.tagName("body")).getText().substring(0,49));
     }
 }

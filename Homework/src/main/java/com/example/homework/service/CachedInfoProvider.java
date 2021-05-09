@@ -84,6 +84,13 @@ public class CachedInfoProvider {
             +(cacheUsages+mainApiRequestsSuccess+backupApiRequestsSuccess)+ " calls";}
     public  String fullStats(){return  cacheStats()+"\n"+apiStats();}
 
+    public String statsAsJson(){return "{\"cacheCalls\":"+cacheUsages+
+            ", \"totalCalls\":"+(cacheUsages+mainApiRequestsSuccess+backupApiRequestsSuccess)
+            +", \"mainApiCalls\":"+mainApiRequests
+            +", \"mainApiCallsSuccess\":"+mainApiRequestsSuccess
+            +", \"secondaryApiCalls\":"+backupApiRequests
+            +", \"secondaryApiCallsSuccess\":"+backupApiRequestsSuccess+
+            "}";}
     public void clear(){lastQueried= new HashMap<>(); cache = new HashMap<>();logger.info("Cleared cache"); }
     private boolean isExpired(Point2D query){
         long now = clock.currentTimeMillis();

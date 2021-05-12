@@ -5,5 +5,15 @@ At class: Due to a VM partitioning work got delayed, user partition didn't have 
           Later at the same day attempts at running the same code told me they could not locate libawt_xawt.so for some reason,<br> I installed apt-file and used it to find packages with the file, finally getting a successful jenkins build
           ![Jenkins Build](https://github.com/buckaroo69/TQS2021/blob/master/08/1stsuccess.png "success")
           
-The console log for the build can be found [here](dudlink "log")
+The console log for the build can be found [here](https://github.com/buckaroo69/TQS2021/blob/master/08/1strunlog.txt "log")
 
+For ex 2 a pipeline was configured to run [every 5 minutes] (https://github.com/buckaroo69/TQS2021/blob/master/08/polling.png "polling interval)
+A failing test was introduced and caught by Jenkins ![error](https://github.com/buckaroo69/TQS2021/blob/master/08/autorun.png "error")
+Error log [here](https://github.com/buckaroo69/TQS2021/blob/master/08/pipelinefail.txt "error log")
+
+Blue UI was installed and inspected
+![main](https://github.com/buckaroo69/TQS2021/blob/master/08/blueui.png "main")
+![pipeline](https://github.com/buckaroo69/TQS2021/blob/master/08/blueuipipeline.png "pipeline")
+![test list](https://github.com/buckaroo69/TQS2021/blob/master/08/testlist.png "test list")
+
+Due to lack of storage space running the docker exercise is not foreseen.

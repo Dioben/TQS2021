@@ -16,4 +16,6 @@ Blue UI was installed and inspected
 ![pipeline](https://github.com/buckaroo69/TQS2021/blob/master/08/blueuipipeline.png "pipeline")
 ![test list](https://github.com/buckaroo69/TQS2021/blob/master/08/testlist.png "test list")
 
-Due to lack of storage space running the docker exercise is not foreseen.
+Docker containers have been created, due to a lack of time docker-related jenkinsfiles will not be looked into.
+![run](https://github.com/buckaroo69/TQS2021/blob/master/08/dockerjenkinsrun.png "run")
+![pw](https://github.com/buckaroo69/TQS2021/blob/master/08/extractpw.png "pw")

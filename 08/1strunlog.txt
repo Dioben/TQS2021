@@ -1,0 +1,395 @@
+Started by user admin
+Running as SYSTEM
+Building in workspace /home/kubuntu/.jenkins/workspace/test
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /home/kubuntu/.jenkins/workspace/test/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url ~/Homework # timeout=10
+Fetching upstream changes from ~/Homework
+ > git --version # timeout=10
+ > git --version # 'git version 2.25.1'
+ > git fetch --tags --force --progress -- ~/Homework +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 7720b0f2ebdb92aaf3b017f8f2cc354c28e01b66 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7720b0f2ebdb92aaf3b017f8f2cc354c28e01b66 # timeout=10
+Commit message: "fuck me i guess"
+ > git rev-list --no-walk 7720b0f2ebdb92aaf3b017f8f2cc354c28e01b66 # timeout=10
+Parsing POMs
+Established TCP socket on 44693
+[test] $ /usr/lib/jvm/java-11-openjdk-amd64/bin/java -cp /home/kubuntu/.jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-agent-1.13.jar:/usr/share/maven/boot/plexus-classworlds-2.x.jar:/usr/share/maven/conf/logging jenkins.maven3.agent.Maven35Main /usr/share/maven /home/kubuntu/.jenkins/war/WEB-INF/lib/remoting-4.6.jar /home/kubuntu/.jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-interceptor-1.13.jar /home/kubuntu/.jenkins/plugins/maven-plugin/WEB-INF/lib/maven3-interceptor-commons-1.13.jar 44693
+<===[JENKINS REMOTING CAPACITY]===>���channel started
+Executing Maven:  -B -f /home/kubuntu/.jenkins/workspace/test/pom.xml clean install
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< com.example:Homework >------------------------
+[INFO] Building Homework 0.0.1-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] The POM for com.sun.xml.bind:jaxb-osgi:jar:2.2.10 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+[INFO] 
+[INFO] --- maven-clean-plugin:3.1.0:clean (default-clean) @ Homework ---
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:prepare-agent (default) @ Homework ---
+[INFO] argLine set to -javaagent:/home/kubuntu/.m2/repository/org/jacoco/org.jacoco.agent/0.8.5/org.jacoco.agent-0.8.5-runtime.jar=destfile=/home/kubuntu/.jenkins/workspace/test/target/jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:resources (default-resources) @ Homework ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] Copying 1 resource
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ Homework ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 11 source files to /home/kubuntu/.jenkins/workspace/test/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:3.2.0:testResources (default-testResources) @ Homework ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Using 'UTF-8' encoding to copy filtered properties files.
+[INFO] skip non existing resourceDirectory /home/kubuntu/.jenkins/workspace/test/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.8.1:testCompile (default-testCompile) @ Homework ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to /home/kubuntu/.jenkins/workspace/test/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ Homework ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.homework.OpenWeatherClientTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.897 s - in com.example.homework.OpenWeatherClientTest
+[INFO] Running com.example.homework.ApiTest
+23:47:54.490 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:47:54.508 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:47:54.564 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.homework.ApiTest] from class [org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper]
+23:47:54.580 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.homework.ApiTest], using SpringBootContextLoader
+23:47:54.585 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.homework.ApiTest]: class path resource [com/example/homework/ApiTest-context.xml] does not exist
+23:47:54.586 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.homework.ApiTest]: class path resource [com/example/homework/ApiTestContext.groovy] does not exist
+23:47:54.586 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.homework.ApiTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:47:54.671 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.homework.ApiTest]
+23:47:54.738 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/kubuntu/.jenkins/workspace/test/target/classes/com/example/homework/HomeworkApplication.class]
+23:47:54.738 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.homework.HomeworkApplication for test class com.example.homework.ApiTest
+23:47:54.742 [main] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.homework.ApiTest]: using defaults.
+23:47:54.742 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener]
+23:47:54.755 [main] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/TransactionDefinition]
+23:47:54.755 [main] DEBUG org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+23:47:54.757 [main] INFO org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@149162a4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2b8a11d7, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@1391d95f, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@416bff93, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@5ef03158, org.springframework.test.context.support.DirtiesContextTestExecutionListener@258f97f8, org.springframework.test.context.event.EventPublishingTestExecutionListener@38c9e937, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@26401eda, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@79e591bb, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@208ce928, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@577b2c5f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@71eb4ea4, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@2456716b]
+23:47:54.761 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@4d65fbad testClass = ApiTest, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@55fc6344 testClass = ApiTest, locations = '{}', classes = '{class com.example.homework.HomeworkApplication, class com.example.homework.ApiTest$AdditionalConfig}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}', contextCustomizers = set[[ImportsContextCustomizer@2df0a4c3 key = [org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration, org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration, org.springframework.boot.autoconfigure.data.web.SpringDataWebAutoConfiguration, org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration, org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration, org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration, org.springframework.boot.autoconfigure.hateoas.HypermediaAutoConfiguration, org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration, org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration, org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration, org.springframework.boot.autoconfigure.mustache.MustacheAutoConfiguration, org.springframework.boot.autoconfigure.task.TaskExecutionAutoConfiguration, org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration, org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration, org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration, org.springframework.boot.autoconfigure.web.servlet.HttpEncodingAutoConfiguration, org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.client.servlet.OAuth2ClientAutoConfiguration, org.springframework.boot.autoconfigure.security.oauth2.resource.servlet.OAuth2ResourceServerAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.SecurityFilterAutoConfiguration, org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityConfiguration]], org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@1fc4b8d6, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@f31b991, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@e67a17ca, org.springframework.boot.test.autoconfigure.OverrideAutoConfigurationContextCustomizerFactory$DisableAutoConfigurationContextCustomizer@193c810, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@594965c9, org.springframework.boot.test.autoconfigure.filter.TypeExcludeFiltersContextCustomizer@70bfd95c, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@ff1d095d, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@2709e075, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@0], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map[[empty]]], class annotated with @DirtiesContext [false] with mode [null].
+23:47:54.803 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTestContextBootstrapper=true}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.5)
+
+2021-05-11 23:47:55.194  WARN 17485 --- [           main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/home/kubuntu/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/home/kubuntu/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2021-05-11 23:47:55.213  INFO 17485 --- [           main] com.example.homework.ApiTest             : Starting ApiTest using Java 11.0.11 on kubuntu2004 with PID 17485 (started by kubuntu in /home/kubuntu/.jenkins/workspace/test)
+2021-05-11 23:47:55.216  INFO 17485 --- [           main] com.example.homework.ApiTest             : No active profile set, falling back to default profiles: default
+2021-05-11 23:47:56.416  INFO 17485 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-11 23:47:56.533  INFO 17485 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-05-11 23:47:56.739  INFO 17485 --- [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2021-05-11 23:47:56.740  INFO 17485 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2021-05-11 23:47:56.741  INFO 17485 --- [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting com/gargoylesoftware/htmlunit/javascript/host/css/StyleAttributes$Definition.
+	at org.jacoco.agent.rt.internal_43f5073.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:246)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:563)
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1017)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:174)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:800)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:698)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:621)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:579)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3166)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2309)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.AbstractJavaScriptConfiguration.process(AbstractJavaScriptConfiguration.java:233)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.AbstractJavaScriptConfiguration.getClassConfiguration(AbstractJavaScriptConfiguration.java:211)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.AbstractJavaScriptConfiguration.buildUsageMap(AbstractJavaScriptConfiguration.java:86)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.AbstractJavaScriptConfiguration.<init>(AbstractJavaScriptConfiguration.java:66)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.JavaScriptConfiguration.<init>(JavaScriptConfiguration.java:595)
+	at com.gargoylesoftware.htmlunit.javascript.configuration.JavaScriptConfiguration.getInstance(JavaScriptConfiguration.java:611)
+	at com.gargoylesoftware.htmlunit.javascript.JavaScriptEngine.<init>(JavaScriptEngine.java:151)
+	at com.gargoylesoftware.htmlunit.WebClient.<init>(WebClient.java:277)
+	at com.gargoylesoftware.htmlunit.WebClient.<init>(WebClient.java:251)
+	at com.gargoylesoftware.htmlunit.WebClient.<init>(WebClient.java:241)
+	at com.gargoylesoftware.htmlunit.WebClient.<init>(WebClient.java:233)
+	at org.springframework.boot.test.web.htmlunit.LocalHostWebClient.<init>(LocalHostWebClient.java:39)
+	at org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration.mockMvcWebClientBuilder(MockMvcWebClientAutoConfiguration.java:49)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:638)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:564)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:524)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:944)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:782)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:774)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:339)
+	at org.springframework.boot.test.context.SpringBootContextLoader.loadContext(SpringBootContextLoader.java:123)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContextInternal(DefaultCacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:124)
+	at org.springframework.test.context.support.DefaultTestContext.getApplicationContext(DefaultTestContext.java:124)
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.postProcessFields(MockitoTestExecutionListener.java:110)
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.injectFields(MockitoTestExecutionListener.java:94)
+	at org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener.prepareTestInstance(MockitoTestExecutionListener.java:61)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:244)
+	at org.springframework.test.context.junit.jupiter.SpringExtension.postProcessTestInstance(SpringExtension.java:138)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$6(ClassBasedTestDescriptor.java:350)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.executeAndMaskThrowable(ClassBasedTestDescriptor.java:355)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$invokeTestInstancePostProcessors$7(ClassBasedTestDescriptor.java:350)
+	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:195)
+	at java.base/java.util.stream.ReferencePipeline$2$1.accept(ReferencePipeline.java:177)
+	at java.base/java.util.ArrayList$ArrayListSpliterator.forEachRemaining(ArrayList.java:1655)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:484)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:474)
+	at java.base/java.util.stream.StreamSpliterators$WrappingSpliterator.forEachRemaining(StreamSpliterators.java:312)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:735)
+	at java.base/java.util.stream.Streams$ConcatSpliterator.forEachRemaining(Streams.java:734)
+	at java.base/java.util.stream.ReferencePipeline$Head.forEach(ReferencePipeline.java:658)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.invokeTestInstancePostProcessors(ClassBasedTestDescriptor.java:349)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$instantiateAndPostProcessTestInstance$4(ClassBasedTestDescriptor.java:270)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.instantiateAndPostProcessTestInstance(ClassBasedTestDescriptor.java:269)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$2(ClassBasedTestDescriptor.java:259)
+	at java.base/java.util.Optional.orElseGet(Optional.java:369)
+	at org.junit.jupiter.engine.descriptor.ClassBasedTestDescriptor.lambda$testInstancesProvider$3(ClassBasedTestDescriptor.java:258)
+	at org.junit.jupiter.engine.execution.TestInstancesProvider.getTestInstances(TestInstancesProvider.java:31)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$prepare$0(TestMethodTestDescriptor.java:101)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:100)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.prepare(TestMethodTestDescriptor.java:65)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$prepare$1(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.prepare(NodeTestTask.java:111)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:79)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:38)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$5(NodeTestTask.java:143)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$7(NodeTestTask.java:129)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:127)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:126)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:84)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:32)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:51)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:220)
+	at org.junit.platform.launcher.core.DefaultLauncher.lambda$execute$6(DefaultLauncher.java:188)
+	at org.junit.platform.launcher.core.DefaultLauncher.withInterceptedStreams(DefaultLauncher.java:202)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:181)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:128)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:150)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:124)
+	at org.apache.maven.surefire.booter.ForkedBooter.invokeProviderInSameClassLoader(ForkedBooter.java:384)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:345)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:126)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:418)
+Caused by: java.io.IOException: Error while instrumenting com/gargoylesoftware/htmlunit/javascript/host/css/StyleAttributes$Definition.
+	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrumentError(Instrumenter.java:159)
+	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	at org.jacoco.agent.rt.internal_43f5073.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 121 more
+Caused by: org.jacoco.agent.rt.internal_43f5073.asm.MethodTooLargeException: Method too large: com/gargoylesoftware/htmlunit/javascript/host/css/StyleAttributes$Definition.<clinit> ()V
+	at org.jacoco.agent.rt.internal_43f5073.asm.MethodWriter.computeMethodInfoSize(MethodWriter.java:2087)
+	at org.jacoco.agent.rt.internal_43f5073.asm.ClassWriter.toByteArray(ClassWriter.java:447)
+	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:90)
+	at org.jacoco.agent.rt.internal_43f5073.core.instr.Instrumenter.instrument(Instrumenter.java:107)
+	... 122 more
+2021-05-11 23:47:57.368  INFO 17485 --- [           main] com.example.homework.ApiTest             : Started ApiTest in 2.557 seconds (JVM running for 4.885)
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.054 s - in com.example.homework.ApiTest
+[INFO] Running com.example.homework.WeatherBitClientTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 s - in com.example.homework.WeatherBitClientTest
+[INFO] Running com.example.homework.CacheTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 s - in com.example.homework.CacheTest
+2021-05-11 23:47:58.594  INFO 17485 --- [extShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 15, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:report (report) @ Homework ---
+[INFO] Loading execution data file /home/kubuntu/.jenkins/workspace/test/target/jacoco.exec
+[INFO] Analyzed bundle 'Homework' with 11 classes
+[INFO] 
+[INFO] --- maven-jar-plugin:3.2.0:jar (default-jar) @ Homework ---
+[INFO] Building jar: /home/kubuntu/.jenkins/workspace/test/target/Homework-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot-maven-plugin:2.4.5:repackage (repackage) @ Homework ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M5:integration-test (default) @ Homework ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.homework.SeleniumInterfaceIT
+23:48:01.949 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+23:48:01.966 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+23:48:02.020 [main] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [com.example.homework.SeleniumInterfaceIT] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+23:48:02.034 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [com.example.homework.SeleniumInterfaceIT], using SpringBootContextLoader
+23:48:02.040 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.homework.SeleniumInterfaceIT]: class path resource [com/example/homework/SeleniumInterfaceIT-context.xml] does not exist
+23:48:02.041 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [com.example.homework.SeleniumInterfaceIT]: class path resource [com/example/homework/SeleniumInterfaceITContext.groovy] does not exist
+23:48:02.041 [main] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.homework.SeleniumInterfaceIT]: no resource found for suffixes {-context.xml, Context.groovy}.
+23:48:02.042 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.homework.SeleniumInterfaceIT]: SeleniumInterfaceIT does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+23:48:02.093 [main] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [com.example.homework.SeleniumInterfaceIT]
+23:48:02.199 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/home/kubuntu/.jenkins/workspace/test/target/classes/com/example/homework/HomeworkApplication.class]
+23:48:02.200 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.homework.HomeworkApplication for test class com.example.homework.SeleniumInterfaceIT
+23:48:02.327 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [com.example.homework.SeleniumInterfaceIT]: using defaults.
+23:48:02.327 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.event.ApplicationEventsTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener, org.springframework.test.context.event.EventPublishingTestExecutionListener, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener]
+23:48:02.341 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.transaction.TransactionalTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttributeSource]
+23:48:02.342 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Skipping candidate TestExecutionListener [org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener] due to a missing dependency. Specify custom listener classes or make the default listener classes and their required dependencies available. Offending class: [org/springframework/transaction/interceptor/TransactionAttribute]
+23:48:02.343 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@486dd616, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@a1d926b, org.springframework.test.context.event.ApplicationEventsTestExecutionListener@36b761e3, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@e27d97b, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@285c63cf, org.springframework.test.context.support.DirtiesContextTestExecutionListener@4e343265, org.springframework.test.context.event.EventPublishingTestExecutionListener@4301fa39, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@73dd0f23, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@38d4488c, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@579ce2e9, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@1b800a11, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3faa55, org.springframework.boot.test.autoconfigure.webservices.client.MockWebServiceServerTestExecutionListener@1ab502f6]
+23:48:02.348 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: context [DefaultTestContext@1f3aa970 testClass = SeleniumInterfaceIT, testInstance = [null], testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5213b887 testClass = SeleniumInterfaceIT, locations = '{}', classes = '{class com.example.homework.HomeworkApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ac044ef, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@440ef8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7f6b7426, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@57e03347, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@67763ebe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@99a65d3], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false]], class annotated with @DirtiesContext [false] with mode [null].
+23:48:02.361 [main] DEBUG org.springframework.test.context.support.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@1f3aa970 testClass = SeleniumInterfaceIT, testInstance = com.example.homework.SeleniumInterfaceIT@45cf0c15, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@5213b887 testClass = SeleniumInterfaceIT, locations = '{}', classes = '{class com.example.homework.HomeworkApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}', contextCustomizers = set[org.springframework.boot.test.context.filter.ExcludeFilterContextCustomizer@5ac044ef, org.springframework.boot.test.json.DuplicateJsonObjectContextCustomizerFactory$DuplicateJsonObjectContextCustomizer@440ef8d, org.springframework.boot.test.mock.mockito.MockitoContextCustomizer@0, org.springframework.boot.test.web.client.TestRestTemplateContextCustomizer@7f6b7426, org.springframework.boot.test.autoconfigure.actuate.metrics.MetricsExportContextCustomizerFactory$DisableMetricExportContextCustomizer@57e03347, org.springframework.boot.test.autoconfigure.properties.PropertyMappingContextCustomizer@0, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverContextCustomizerFactory$Customizer@67763ebe, org.springframework.boot.test.context.SpringBootTestArgs@1, org.springframework.boot.test.context.SpringBootTestWebEnvironment@99a65d3], resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.boot.test.context.SpringBootContextLoader', parent = [null]], attributes = map['org.springframework.test.context.web.ServletTestExecutionListener.activateListener' -> false, 'org.springframework.test.context.event.ApplicationEventsTestExecutionListener.recordApplicationEvents' -> false]]].
+23:48:02.389 [main] DEBUG org.springframework.test.context.support.TestPropertySourceUtils - Adding inlined properties to environment: {spring.jmx.enabled=false, org.springframework.boot.test.context.SpringBootTestContextBootstrapper=true, server.port=0}
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.4.5)
+
+2021-05-11 23:48:02.709  WARN 17570 --- [           main] ory$DuplicateJsonObjectContextCustomizer : 
+
+Found multiple occurrences of org.json.JSONObject on the class path:
+
+	jar:file:/home/kubuntu/.m2/repository/com/vaadin/external/google/android-json/0.0.20131108.vaadin1/android-json-0.0.20131108.vaadin1.jar!/org/json/JSONObject.class
+	jar:file:/home/kubuntu/.m2/repository/org/json/json/20210307/json-20210307.jar!/org/json/JSONObject.class
+
+You may wish to exclude one of them to ensure predictable runtime behavior
+
+2021-05-11 23:48:02.729  INFO 17570 --- [           main] c.example.homework.SeleniumInterfaceIT   : Starting SeleniumInterfaceIT using Java 11.0.11 on kubuntu2004 with PID 17570 (started by kubuntu in /home/kubuntu/.jenkins/workspace/test)
+2021-05-11 23:48:02.732  INFO 17570 --- [           main] c.example.homework.SeleniumInterfaceIT   : No active profile set, falling back to default profiles: default
+2021-05-11 23:48:04.074  INFO 17570 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 0 (http)
+2021-05-11 23:48:04.089  INFO 17570 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-05-11 23:48:04.090  INFO 17570 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.45]
+2021-05-11 23:48:04.203  INFO 17570 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-05-11 23:48:04.203  INFO 17570 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1206 ms
+2021-05-11 23:48:04.539  INFO 17570 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-05-11 23:48:04.655  INFO 17570 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2021-05-11 23:48:05.083  INFO 17570 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 42707 (http) with context path ''
+2021-05-11 23:48:05.097  INFO 17570 --- [           main] c.example.homework.SeleniumInterfaceIT   : Started SeleniumInterfaceIT in 2.704 seconds (JVM running for 4.257)
+2021-05-11 23:48:05.982  INFO 17570 --- [           main] i.g.bonigarcia.wdm.WebDriverManager      : Using chromedriver 90.0.4430.24 (resolved driver for Chrome 90)
+2021-05-11 23:48:06.008  INFO 17570 --- [           main] i.g.bonigarcia.wdm.WebDriverManager      : Exporting webdriver.chrome.driver as /home/kubuntu/.cache/selenium/chromedriver/linux64/90.0.4430.24/chromedriver
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 7664
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:07.336  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:07.502  INFO 17570 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-05-11 23:48:07.503  INFO 17570 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-05-11 23:48:07.504  INFO 17570 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-05-11 23:48:07.534  INFO 17570 --- [o-auto-1-exec-1] c.example.homework.HomeworkApplication   : Cache stats have been requested
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 15792
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:08.596  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:08.633  INFO 17570 --- [o-auto-1-exec-4] c.example.homework.HomeworkApplication   : Cache stats have been requested
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 11245
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:09.667  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:11.354  INFO 17570 --- [-auto-1-exec-10] c.example.homework.HomeworkApplication   : we've been hit for 0.3076157096439005,0.0
+2021-05-11 23:48:11.354  INFO 17570 --- [-auto-1-exec-10] c.example.homework.HomeworkApplication   : Refreshing...
+2021-05-11 23:48:11.535  INFO 17570 --- [-auto-1-exec-10] c.example.homework.HomeworkApplication   : Got {"coord":{"lon":0,"lat":0.3076},"list":[{"dt":1620774000,"components":{"no2":0.06,"no":0,"o3":16.63,"so2":0.06,"pm2_5":2.83,"pm10":4.52,"nh3":0,"co":253.68},"main":{"aqi":1}}]} from OpenWeatherMap
+2021-05-11 23:48:12.376  INFO 17570 --- [o-auto-1-exec-1] c.example.homework.HomeworkApplication   : we've been hit for 0.3076157096439005,0.0
+2021-05-11 23:48:12.377  INFO 17570 --- [o-auto-1-exec-1] c.example.homework.HomeworkApplication   : Did not require refresh
+2021-05-11 23:48:12.419  INFO 17570 --- [o-auto-1-exec-3] c.example.homework.HomeworkApplication   : we've been hit for 0.3076157096439005,0.0
+2021-05-11 23:48:12.419  INFO 17570 --- [o-auto-1-exec-3] c.example.homework.HomeworkApplication   : Did not require refresh
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 2909
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:13.319  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:14.099  INFO 17570 --- [o-auto-1-exec-7] c.example.homework.HomeworkApplication   : we've been hit for -2000.0,0.0
+2021-05-11 23:48:14.099  INFO 17570 --- [o-auto-1-exec-7] c.example.homework.HomeworkApplication   : Refreshing...
+2021-05-11 23:48:14.100 ERROR 17570 --- [o-auto-1-exec-7] c.example.homework.HomeworkApplication   : Both APIs have failed
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 1409
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:15.990  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:16.006  INFO 17570 --- [-auto-1-exec-10] c.example.homework.HomeworkApplication   : Cache stats have been requested
+Starting ChromeDriver 90.0.4430.24 (4c6d850f087da467d926e8eddb76550aed655991-refs/branch-heads/4430@{#429}) on port 10477
+Only local connections are allowed.
+Please see https://chromedriver.chromium.org/security-considerations for suggestions on keeping ChromeDriver safe.
+ChromeDriver was started successfully.
+2021-05-11 23:48:16.970  INFO 17570 --- [ null to remote] o.o.selenium.remote.ProtocolHandshake    : Detected dialect: W3C
+2021-05-11 23:48:16.981  INFO 17570 --- [o-auto-1-exec-4] c.example.homework.HomeworkApplication   : Cache stats have been requested
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.212 s - in com.example.homework.SeleniumInterfaceIT
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-failsafe-plugin:3.0.0-M5:verify (default) @ Homework ---
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-install-plugin:2.5.2:install (default-install) @ Homework ---
+[INFO] Installing /home/kubuntu/.jenkins/workspace/test/target/Homework-0.0.1-SNAPSHOT.jar to /home/kubuntu/.m2/repository/com/example/Homework/0.0.1-SNAPSHOT/Homework-0.0.1-SNAPSHOT.jar
+[INFO] Installing /home/kubuntu/.jenkins/workspace/test/pom.xml to /home/kubuntu/.m2/repository/com/example/Homework/0.0.1-SNAPSHOT/Homework-0.0.1-SNAPSHOT.pom
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  29.920 s
+[INFO] Finished at: 2021-05-11T23:48:17+01:00
+[INFO] ------------------------------------------------------------------------
+Waiting for Jenkins to finish collecting data
+[JENKINS] Archiving /home/kubuntu/.jenkins/workspace/test/pom.xml to com.example/Homework/0.0.1-SNAPSHOT/Homework-0.0.1-SNAPSHOT.pom
+[JENKINS] Archiving /home/kubuntu/.jenkins/workspace/test/target/Homework-0.0.1-SNAPSHOT.jar to com.example/Homework/0.0.1-SNAPSHOT/Homework-0.0.1-SNAPSHOT.jar
+channel stopped
+Finished: SUCCESS 

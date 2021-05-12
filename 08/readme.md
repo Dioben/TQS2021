@@ -5,3 +5,5 @@ At class: Due to a VM partitioning work got delayed, user partition didn't have 
           Later at the same day attempts at running the same code told me they could not locate libawt_xawt.so for some reason,<br> I installed apt-file and used it to find packages with the file, finally getting a successful jenkins build
           ![Jenkins Build](https://github.com/buckaroo69/TQS2021/blob/master/08/1stsuccess.png "success")
           
+The console log for the build can be found [here](dudlink "log")
+
